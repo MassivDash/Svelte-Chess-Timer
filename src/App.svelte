@@ -1,9 +1,11 @@
 <script>
-  import Clock from './Clock.svelte'
-  import Navbar from './Navbar.svelte'
+  import Clock from './Components/Clock/Clock.svelte'
+  import Navbar from './Components/Navbar/Navbar.svelte'
+  import IconButton from './Components/IconButton/IconButton.svelte'
 
   let started = false
   let reset = false
+  let timeOver = false
   let holder
 
   let otherSidePlaying = null
@@ -16,37 +18,34 @@
 
 <style>
   main {
+    max-width: 100vw;
     text-align: center;
     padding: 1em;
-	margin: 0 auto;
-	background: repeat url('/assets/greyzz.png');
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+    margin: 0 auto;
+    background: repeat url('/assets/greyzz.png');
   }
 
   section {
     display: flex;
-    max-width: 90vw;
+    max-width: 95vw;
     flex-direction: column;
     align-items: center;
-	justify-content: center;
-	margin: 25px;
-	padding: 25px;
+    justify-content: center;
   }
 
   div {
     display: flex;
     width: 100%;
-	max-width: 1024px;
-	
+    max-width: 1024px;
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: row;
   }
 
   @media (min-width: 640px) {
@@ -59,10 +58,20 @@
       justify-content: center;
     }
 
+    section {
+      display: flex;
+      max-width: 90vw;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 25px;
+      padding: 10px 25px;
+    }
+
     main {
       max-width: none;
-	  display: flex;
-	  height: 100%;
+      display: flex;
+      height: 100%;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -72,21 +81,41 @@
 
 <main>
   <Navbar />
-  <h1>Svelte Chess Timer</h1>
   <div class:holder>
     <section>
-      <Clock reset={reset} started={started} amIPlaying={started && otherSidePlaying} {handleClick} />
+      <Clock
+        {reset}
+        {started}
+        amIPlaying={started && otherSidePlaying}
+        {handleClick} />
     </section>
     <section>
-      <Clock reset={reset} started={started} amIPlaying={started && !otherSidePlaying} {handleClick} />
+      <Clock
+        {reset}
+        {started}
+        amIPlaying={started && !otherSidePlaying}
+        {handleClick} />
     </section>
   </div>
-  <button on:click={() => {started = !started; reset = false }}>{started ? 'Stop' : 'Start'}</button>
+  <div class="controls">
+  <IconButton
+    iconType={'play'}
+    handleClick={() => {
+      started = !started
+      reset = false
+      timeOver = false
+    }}
+    text={started ? 'Stop' : 'Start'} />
 
-	{#if started}
-	<button on:click={() => {started = false; reset = true}}>
-		Reset
-	</button>
-{/if}
-
+  {#if started}
+    <IconButton
+      iconType={'reset'}
+      handleClick={() => {
+        started = false
+        reset = true
+        timeOver = false
+      }}
+      text="Reset" />
+  {/if}
+  </div>
 </main>
