@@ -83,29 +83,6 @@
   }
 </style>
 
-<svelte:head>
-  <title>Svelte Chess Timer</title>
-  <meta name="title" content="Svelte Chess Timer" />
-  <meta
-    name="description"
-    content="Svelte Chess Timer is web app that's lets you track time during
-    chess game" />
-  <meta name="keywords" content="Chess Timer, Svelte, JS" />
-  <meta name="robots" content="index, follow" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="language" content="English" />
-  <meta name="author" content="spaceout.pl" />
-  <meta property="og:title" content="Svelte Chess Timer" />
-  <meta
-    property="og:description"
-    content="Svelte Chess Timer is web app that's lets you track time during
-    chess game" />
-  <meta
-    property="og:image"
-    content="https://chess-timer.spaceout.pl/assets/logo.png" />
-  <meta property="og:url" content="https:/chess-timer.spaceout.pl" />
-</svelte:head>
-
 <main>
   <Navbar />
   <div class:holder>

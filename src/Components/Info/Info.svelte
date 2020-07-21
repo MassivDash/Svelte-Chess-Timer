@@ -32,7 +32,7 @@
   <p>
     Svelte Chess Timer Source code at
     <a
-      href="https://https://github.com/MassivDash/Svelte-Chess-Timer"
+      href="https://github.com/MassivDash/Svelte-Chess-Timer"
       target="_black"
       rel="nofollow">
       github

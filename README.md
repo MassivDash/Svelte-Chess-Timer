@@ -1,3 +1,17 @@
+# Svelte Chess Timer 
+
+Svelte chess timer is a simple app written in the Sevlte framework . This fully operational chess timer clock, will track oponents times in the traditional way of counting down to midnight. The old switch-eru button lets you rotate the timer, great option if you are really plan on using it. Don't forget to switch on the alarm next to your timer, for the buzzer at the end of time limit
+
+# Changes from the basic svelte template 
+- added eslint and prettier
+- import svg as components thanks to rollup-plugin-svelte-svg
+- moment for time manipulation
+
+# Demo 
+
+[chess-timer.spaceout.pl](https://chess-timer.spaceout.pl/)
+
+
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
