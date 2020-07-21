@@ -1,5 +1,4 @@
 <script>
-  import { slide } from 'svelte/transition'
   export let handleClick
   export let active
 
@@ -17,7 +16,7 @@
   }
 </style>
 
-<button on:click={handleClick}>
+<button on:click={active ? () => handleClick() : null}>
 
   {#if !active}
     <PlayIcon width="24px" />

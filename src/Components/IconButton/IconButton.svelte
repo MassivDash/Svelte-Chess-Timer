@@ -11,6 +11,7 @@
   import AlarmOnIcon from './Svg/alarm_on-24px.svg'
   import AlarmOffIcon from './Svg/alarm_off-24px.svg'
   import ConfigIcon from './Svg/timer-24px.svg'
+  import PauseIcon from './Svg/pause-24px.svg'
 </script>
 
 <style>
@@ -26,33 +27,36 @@
 <button on:click={handleClick}>
 
   {#if iconType === 'rotate'}
-    <RotateIcon width="24px" fill="fill" />
+    <RotateIcon width="24px" {fill} />
   {/if}
 
   {#if iconType === 'reset'}
-    <ResetIcon width="24px" fill="fill" />
+    <ResetIcon width="24px" {fill} />
   {/if}
 
   {#if iconType === 'play'}
-    <PlayIcon width="24px" fill="fill" />
+    <PlayIcon width="24px" {fill} />
   {/if}
 
   {#if iconType === 'done'}
-    <DoneIcon width="24px" fill="fill" />
+    <DoneIcon width="24px" {fill} />
   {/if}
 
   {#if iconType === 'alarmOn'}
-    <AlarmOnIcon width="24px" fill="fill" />
+    <AlarmOnIcon width="24px" {fill} />
   {/if}
 
   {#if iconType === 'alarmOff'}
-    <AlarmOffIcon width="24px" fill="fill" />
+    <AlarmOffIcon width="24px" {fill} />
   {/if}
 
   {#if iconType === 'config'}
-    <ConfigIcon width="24px" fill="fill" />
+    <ConfigIcon width="24px" {fill} />
   {/if}
 
+  {#if iconType === 'pause'}
+    <PauseIcon width="24px" fill="#ff3e00" />
+  {/if}
   {#if text}
     <p>{text}</p>
   {/if}

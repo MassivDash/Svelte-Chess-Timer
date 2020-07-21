@@ -11,14 +11,11 @@
   export let handleClick
   export let reset
 
-  let holder
   let buttonsHolder
   let opacityOn
-  let configClass
 
   let sound = false
   let rotate = false
-  let alarm = false
   let config = false
   export let timeOver = false
   let refTime = moment().utcOffset(0)
@@ -121,6 +118,13 @@
   .second,
   .second-counterweight {
     stroke: #ff3e00;
+    transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .second-nonActive,
+  .second-counterweight-nonActive {
+    stroke: #333;
+    transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .second-counterweight {
@@ -147,11 +151,11 @@
     min-height: 60px;
   }
 
-  input[type="number"] {
+  input[type='number'] {
     text-align: center;
     background: transparent;
     border: 0;
-}
+  }
 
   input[type='range'] {
     -webkit-appearance: none;
@@ -166,7 +170,7 @@
     height: 8.4px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #ff3e00;;
+    background: #ff3e00;
     border-radius: 1.3px;
   }
   input[type='range']::-webkit-slider-thumb {
@@ -180,7 +184,7 @@
     margin-top: -14px;
   }
   input[type='range']:focus::-webkit-slider-runnable-track {
-    background: #ff3e00;;
+    background: #ff3e00;
   }
   input[type='range']::-moz-range-track {
     width: 100%;
@@ -234,9 +238,8 @@
   }
 
   label {
-    margin: 20px
+    margin: 20px;
   }
-
 </style>
 
 <div class:rotate>
@@ -273,8 +276,16 @@
 
       <!-- second hand -->
       <g transform="rotate({6 * seconds})">
-        <line class="second" y1="10" y2="-38" />
-        <line class="second-counterweight" y1="10" y2="2" />
+        <line
+          class:second={amIPlaying}
+          class:second-nonActive={!amIPlaying}
+          y1="10"
+          y2="-38" />
+        <line
+          class:second-counterweight={amIPlaying}
+          class:second-counterweight-nonActive={!amIPlaying}
+          y1="10"
+          y2="2" />
       </g>
     </svg>
   </div>
@@ -282,7 +293,7 @@
   <p>
     {timeOver ? '' : `${Math.abs(refTime.hours() - 23) === 0 ? '' : `${Math.abs(refTime.hours() - 23)}:`}${Math.abs(refTime.minutes() - 60) === 60 ? '59' : Math.abs(refTime.minutes() - 59)}:${Math.abs(refTime.seconds() - 60) === 60 ? '59' : Math.abs(refTime.seconds() - 59)}`}
   </p>
-  <p>{timeOver ? 'Time over' : ''}</p>
+  <p style="color: #ff3e00">{timeOver ? 'Time over' : ''}</p>
 
   <div class:buttonsHolder>
     <PlayButton {handleClick} active={amIPlaying} />
@@ -303,7 +314,7 @@
       <label>
         <input type="number" bind:value={chessTime} min="1" max="720" />
         <input type="range" bind:value={chessTime} min="1" max="720" />
-        <IconButton iconType={'done'} handleClick={handleSet} />
+        <IconButton iconType={'done'} handleClick={() => handleSet()} />
       </label>
 
     </div>
