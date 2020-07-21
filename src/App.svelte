@@ -2,6 +2,7 @@
   import Clock from './Components/Clock/Clock.svelte'
   import Navbar from './Components/Navbar/Navbar.svelte'
   import IconButton from './Components/IconButton/IconButton.svelte'
+  import Info from './Components/Info/Info.svelte'
 
   let started = false
   let reset = false
@@ -33,11 +34,6 @@
     justify-content: center;
   }
 
-  h2 {
-    font-size: 17px;
-    margin-left: 5px;
-  }
-
   div {
     display: flex;
     width: 100%;
@@ -46,16 +42,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-
-  .column {
-    border-top: 5px solid white;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
   }
 
   .controls {
@@ -95,20 +81,29 @@
       border-bottom: 5px solid white;
     }
   }
-
-  .payton {
-    font-family: 'Paytone One', sans-serif;
-    font-size: 50px;
-    color: #ff3e00;
-    line-height: 0em;
-    text-align: center;
-  }
 </style>
 
 <svelte:head>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
-    rel="stylesheet" />
+  <title>Svelte Chess Timer</title>
+  <meta name="title" content="Svelte Chess Timer" />
+  <meta
+    name="description"
+    content="Svelte Chess Timer is web app that's lets you track time during
+    chess game" />
+  <meta name="keywords" content="Chess Timer, Svelte, JS" />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <meta name="author" content="spaceout.pl" />
+  <meta property="og:title" content="Svelte Chess Timer" />
+  <meta
+    property="og:description"
+    content="Svelte Chess Timer is web app that's lets you track time during
+    chess game" />
+  <meta
+    property="og:image"
+    content="https://chess-timer.spaceout.pl/assets/logo.png" />
+  <meta property="og:url" content="https:/chess-timer.spaceout.pl" />
 </svelte:head>
 
 <main>
@@ -147,13 +142,6 @@
       text="Reset" />
   </div>
 
-  <div class="column">
-    <h2>Developed by</h2>
-    <a href="https://spaceout.pl/">
-      <h2>spaceout.pl</h2>
-    </a>
-  </div>
+  <Info />
 
 </main>
-
-<p class="payton">s</p>

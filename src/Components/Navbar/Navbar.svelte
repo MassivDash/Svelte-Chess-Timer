@@ -26,5 +26,5 @@
 
 <navbar>
   <IconButton iconType={'config'} fill={'#ff3e00'} />
-  SVELETE CHESS TIMER
+  SVELTE CHESS TIMER
 </navbar>
