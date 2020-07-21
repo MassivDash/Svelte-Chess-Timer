@@ -24,7 +24,7 @@
   }
 </style>
 
-<button on:click={handleClick}>
+<button on:click={handleClick} title={iconType} aria-label={`This button will ${iconType} timer`}>
 
   {#if iconType === 'rotate'}
     <RotateIcon width="24px" {fill} />

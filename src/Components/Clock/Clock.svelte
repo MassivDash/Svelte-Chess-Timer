@@ -22,7 +22,7 @@
   refTime.set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
   refTime.subtract(chessTime, 'minutes')
 
-  let myAudio = new Audio('/assets/alarm.wav')
+  let myAudio = new Audio('/assets/alarm.mp3')
 
   function handleSet() {
     if (!started) {

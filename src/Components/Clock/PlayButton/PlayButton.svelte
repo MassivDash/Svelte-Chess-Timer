@@ -19,11 +19,11 @@
 <button on:click={active ? () => handleClick() : null}>
 
   {#if !active}
-    <PlayIcon width="24px" />
+    <PlayIcon width="24px" title="Start the clock" aria-label="Start the clock"/>
   {/if}
 
   {#if active}
-    <PauseIcon width="24px" fill="#ff3e00" />
+    <PauseIcon width="24px" fill="#ff3e00" title="Stop the clock" aria-label="Stop the clock"/>
   {/if}
 
 </button>
