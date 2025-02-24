@@ -18,6 +18,33 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
   }
+
+
+  let wakeLock = null;
+
+async function requestWakeLock() {
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+    console.log('Wake Lock is active');
+    
+    wakeLock.addEventListener('release', () => {
+      console.log('Wake Lock was released');
+    });
+  } catch (err) {
+    console.error(`${err.name}, ${err.message}`);
+  }
+}
+
+function releaseWakeLock() {
+  if (wakeLock !== null) {
+    wakeLock.release()
+      .then(() => {
+        wakeLock = null;
+        console.log('Wake Lock released');
+      });
+  }
+}
+
 </script>
 
 <style>
@@ -121,6 +148,15 @@
         reset = true
       }}
       text="Reset" />
+
+      <IconButton
+      iconType={'lightbulb'}
+      handleClick={() => {
+        wakeLock ? releaseWakeLock() : requestWakeLock()
+      }}
+      fill={wakeLock ? '#ff3e00' : '#000'}
+      text={wakeLock ? "Screen lock on" : "Switch Screen off"}
+      />
   </div>
 
   <Info />

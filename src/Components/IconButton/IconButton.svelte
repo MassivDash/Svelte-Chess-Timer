@@ -12,6 +12,7 @@
   import AlarmOffIcon from './Svg/alarm_off-24px.svg'
   import ConfigIcon from './Svg/timer-24px.svg'
   import PauseIcon from './Svg/pause-24px.svg'
+  import LightbulbIcon from './Svg/lightbulb-24px.svg'
 </script>
 
 <style>
@@ -57,6 +58,9 @@
   {#if iconType === 'pause'}
     <PauseIcon width="24px" fill="#ff3e00" />
   {/if}
+  {#if iconType === 'lightbulb'}
+  <LightbulbIcon width="24px" {fill} />
+{/if}
   {#if text}
     <p>{text}</p>
   {/if}
