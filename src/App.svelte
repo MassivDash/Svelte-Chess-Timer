@@ -18,7 +18,83 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
   }
+
+  let wakeLock = null
+
+  async function requestWakeLock() {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen')
+      console.log('Wake Lock is active')
+
+      wakeLock.addEventListener('release', () => {
+        console.log('Wake Lock was released')
+      })
+    } catch (err) {
+      console.error(`${err.name}, ${err.message}`)
+    }
+  }
+
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release().then(() => {
+        wakeLock = null
+        console.log('Wake Lock released')
+      })
+    }
+  }
 </script>
+
+<main>
+  <Navbar />
+  <div class:holder>
+    <section>
+      <Clock
+        {reset}
+        {started}
+        amIPlaying={started && otherSidePlaying}
+        {handleClick}
+      />
+    </section>
+    <section>
+      <Clock
+        {reset}
+        {started}
+        amIPlaying={started && !otherSidePlaying}
+        {handleClick}
+      />
+    </section>
+  </div>
+  <div class="controls">
+    <IconButton
+      iconType={started ? 'pause' : 'play'}
+      handleClick={() => {
+        started = !started
+        reset = false
+      }}
+      text={started ? 'Stop' : 'Start'}
+    />
+
+    <IconButton
+      iconType={'reset'}
+      handleClick={() => {
+        started = false
+        reset = true
+      }}
+      text="Reset"
+    />
+
+    <IconButton
+      iconType={'lightbulb'}
+      handleClick={() => {
+        wakeLock ? releaseWakeLock() : requestWakeLock()
+      }}
+      fill={wakeLock ? '#ff3e00' : '#000'}
+      text={wakeLock ? 'Screen lock on' : 'Screen lock off'}
+    />
+  </div>
+
+  <Info />
+</main>
 
 <style>
   main {
@@ -86,43 +162,3 @@
     }
   }
 </style>
-
-<main>
-  <Navbar />
-  <div class:holder>
-    <section>
-      <Clock
-        {reset}
-        {started}
-        amIPlaying={started && otherSidePlaying}
-        {handleClick} />
-    </section>
-    <section>
-      <Clock
-        {reset}
-        {started}
-        amIPlaying={started && !otherSidePlaying}
-        {handleClick} />
-    </section>
-  </div>
-  <div class="controls">
-    <IconButton
-      iconType={started ? 'pause' : 'play'}
-      handleClick={() => {
-        started = !started
-        reset = false
-      }}
-      text={started ? 'Stop' : 'Start'} />
-
-    <IconButton
-      iconType={'reset'}
-      handleClick={() => {
-        started = false
-        reset = true
-      }}
-      text="Reset" />
-  </div>
-
-  <Info />
-
-</main>
