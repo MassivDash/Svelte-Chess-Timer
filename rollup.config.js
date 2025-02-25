@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
-import { svelteSVG } from "rollup-plugin-svelte-svg";
+import { svelteSVG } from 'rollup-plugin-svelte-svg'
 import css from 'rollup-plugin-css-only'
 
 // eslint-disable-next-line no-undef
@@ -22,8 +22,8 @@ export default {
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production
-        dev: !production
-      }
+        dev: !production,
+      },
     }),
     css({ output: 'bundle.css' }),
     // If you have external dependencies installed from
@@ -33,7 +33,7 @@ export default {
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
     resolve({
       browser: true,
-      dedupe: ['svelte']
+      dedupe: ['svelte'],
     }),
     commonjs(),
 

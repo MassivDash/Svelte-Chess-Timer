@@ -6,6 +6,25 @@
   import PauseIcon from '../../IconButton/Svg/pause-24px.svg'
 </script>
 
+<button on:click={active ? () => handleClick() : null}>
+  {#if !active}
+    <PlayIcon
+      width="24px"
+      title="Start the clock"
+      aria-label="Start the clock"
+    />
+  {/if}
+
+  {#if active}
+    <PauseIcon
+      width="24px"
+      fill="#ff3e00"
+      title="Stop the clock"
+      aria-label="Stop the clock"
+    />
+  {/if}
+</button>
+
 <style>
   button {
     border: 0;
@@ -15,15 +34,3 @@
     min-width: 50px;
   }
 </style>
-
-<button on:click={active ? () => handleClick() : null}>
-
-  {#if !active}
-    <PlayIcon width="24px" title="Start the clock" aria-label="Start the clock"/>
-  {/if}
-
-  {#if active}
-    <PauseIcon width="24px" fill="#ff3e00" title="Stop the clock" aria-label="Stop the clock"/>
-  {/if}
-
-</button>

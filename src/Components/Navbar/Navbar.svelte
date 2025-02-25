@@ -2,6 +2,11 @@
   import IconButton from '../IconButton/IconButton.svelte'
 </script>
 
+<navbar>
+  <IconButton iconType={'config'} fill={'#ff3e00'} />
+  SVELTE CHESS TIMER
+</navbar>
+
 <style>
   navbar {
     display: flex;
@@ -23,8 +28,3 @@
     }
   }
 </style>
-
-<navbar>
-  <IconButton iconType={'config'} fill={'#ff3e00'} />
-  SVELTE CHESS TIMER
-</navbar>

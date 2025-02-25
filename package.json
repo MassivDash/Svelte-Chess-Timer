@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c && workbox generateSW workbox-config.js",
-    "dev": "rollup -c -w -- --host",
+    "dev": "rollup -c -w",
     "start": "sirv public",
     "fix": "npx eslint --fix \"{,!(node_modules|public)/**/}*.{js,svelte}\"",
     "format": "npx prettier --write \"{,!(node_modules|public)/**/}*.{js,svelte}\"",

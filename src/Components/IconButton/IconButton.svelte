@@ -15,18 +15,11 @@
   import LightbulbIcon from './Svg/lightbulb-24px.svg'
 </script>
 
-<style>
-  button {
-    border: 0;
-    margin: 5px;
-    padding: 5px;
-    min-height: 50px;
-    min-width: 50px;
-  }
-</style>
-
-<button on:click={handleClick} title={iconType} aria-label={`This button will ${iconType} timer`}>
-
+<button
+  on:click={handleClick}
+  title={iconType}
+  aria-label={`This button will ${iconType} timer`}
+>
   {#if iconType === 'rotate'}
     <RotateIcon width="24px" {fill} />
   {/if}
@@ -59,10 +52,19 @@
     <PauseIcon width="24px" fill="#ff3e00" />
   {/if}
   {#if iconType === 'lightbulb'}
-  <LightbulbIcon width="24px" {fill} />
-{/if}
+    <LightbulbIcon width="24px" {fill} />
+  {/if}
   {#if text}
     <p>{text}</p>
   {/if}
-
 </button>
+
+<style>
+  button {
+    border: 0;
+    margin: 5px;
+    padding: 5px;
+    min-height: 50px;
+    min-width: 50px;
+  }
+</style>
